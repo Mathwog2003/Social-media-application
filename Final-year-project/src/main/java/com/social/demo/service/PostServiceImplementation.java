@@ -20,9 +20,17 @@ public class PostServiceImplementation implements PostServiceInterface{
 
     @Autowired
     private UserRepository userRepository;
-    @Override
-    public Post createNewPost(Integer postId, Integer userId) throws Exception {
 
+
+    public Post createNewPost(Post post, Integer userId) throws Exception {
+    Optional<User> user = userService.findUserById(userId);
+    Post newpost = new Post();
+    newpost.setCaption(post.getCaption());
+    newpost.setImage(post.getImage());
+    newpost.setCreatedAt(post.getCreatedAt());
+    newpost.setVideo(post.getVideo());
+    newpost.setUser(post.getUser());
+    return newpost;
 
     }
 

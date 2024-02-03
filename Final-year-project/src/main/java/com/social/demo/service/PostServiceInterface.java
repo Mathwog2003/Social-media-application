@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PostServiceInterface {
 
-    Post createNewPost(Integer post, Integer userId) throws Exception;
+    Post createNewPost(Post post, Integer userId) throws Exception;
     String deletePost(Integer postId,Integer userId) throws Exception;
     List<Post> findPostByUserId(Integer userId);
     Post findPostByPostId(Integer postId) throws Exception;
