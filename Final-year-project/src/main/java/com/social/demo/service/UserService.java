@@ -17,7 +17,6 @@ public class UserService implements UserServiceInterface{
     @Override
     public User registerUser(User user) {
         return userRepositary.save(user);
-
     }
 
     @Override

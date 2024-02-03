@@ -25,8 +25,10 @@ public class User {
     private String gender;
 
     @ElementCollection
-    private List<Integer> followers;
+    private List<Integer> followers = new ArrayList<>();
 
     @ElementCollection
-    private List<Integer> followings;
+    private List<Integer> followings = new ArrayList<>();
+
+    private List<Post> savedPost = new ArrayList<>() ;
 }
