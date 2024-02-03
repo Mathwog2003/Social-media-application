@@ -39,14 +39,21 @@ public class PostServiceImplementation implements PostServiceInterface{
     @Override
     public String deletePost(Integer postId, Integer userId) throws Exception {
         Optional<User> user = userService.findUserById(userId);
-        Post post =findPostByPostId(postId);
-        if(post.getUser().getId()!=user.get().getId())
-        {
-            throw new Exception("you can't delete another users post");
-        }
-        postRepository.delete(post);
-        return "post has been deleted";
+        Post post = findPostByPostId(postId);
 
+        if (post.getUser().getId() != user.get().getId()) {
+            throw new Exception("You can't delete another user's post");
+        }
+
+        // Remove references to the post in users_saved_post table
+        for (User u : userRepository.findAll()) {
+            u.getSavedPost().remove(post);
+        }
+
+        // Delete the post
+        postRepository.delete(post);
+
+        return "Post has been deleted";
     }
 
     @Override

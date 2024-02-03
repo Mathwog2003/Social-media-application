@@ -22,6 +22,7 @@ public class Post {
     private String image;
     private String video;
 
+
     @ManyToOne
     private User user;
     @OneToMany
