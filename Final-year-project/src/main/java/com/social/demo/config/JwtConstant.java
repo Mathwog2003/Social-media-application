@@ -1,0 +1,6 @@
+package com.social.demo.config;
+
+public class JwtConstant {
+    public  static String JWT_HEADER="Authorization";
+    public static String SECRET_KEY="DHDJGIEYHDDSLANXHJSDJSKHDKSJDKSJEI34JD";
+}
