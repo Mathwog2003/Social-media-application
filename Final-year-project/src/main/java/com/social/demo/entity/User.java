@@ -29,6 +29,6 @@ public class User {
 
     @ElementCollection
     private List<Integer> followings = new ArrayList<>();
-
+    @ManyToMany
     private List<Post> savedPost = new ArrayList<>() ;
 }

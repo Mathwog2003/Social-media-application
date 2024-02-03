@@ -7,6 +7,7 @@ import com.social.demo.repositary.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,9 +29,10 @@ public class PostServiceImplementation implements PostServiceInterface{
     newpost.setCaption(post.getCaption());
     newpost.setImage(post.getImage());
     newpost.setCreatedAt(post.getCreatedAt());
+    newpost.setCreatedAt(LocalDateTime.now());
     newpost.setVideo(post.getVideo());
-    newpost.setUser(post.getUser());
-    return newpost;
+    newpost.setUser(user.get());
+    return postRepository.save(newpost);
 
     }
 
@@ -48,8 +50,8 @@ public class PostServiceImplementation implements PostServiceInterface{
     }
 
     @Override
-    public List<Post> findPostByUserId(Integer userId) {
-        return postRepository.findPostByUserId(userId);
+    public Optional<Post> findPostByUserId(Integer userId) {
+        return postRepository.findPostByUserId(Long.valueOf(userId));
     }
 
     @Override
